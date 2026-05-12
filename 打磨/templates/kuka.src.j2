@@ -1,0 +1,20 @@
+&ACCESS RVP
+&REL 1
+DEF AI_Grinding_Task( )
+  ; AI Generated KUKA Grinding Program (Unit: mm, Degrees)
+  BAS (#INITMOV,0)
+  $TOOL = TOOL_DATA[1]
+  $BASE = BASE_DATA[1]
+  $VEL.CP = {{ tcp_speed | default(0.05) }}
+  PTP $POS_ACT
+{% for wp in waypoints %}
+{% if wp.is_jump %}
+  ; --- 检测到非连续区域，执行抬刀跨越 ---
+  PTP {X {{ "%.3f"|format(wp.x) }},Y {{ "%.3f"|format(wp.y) }},Z {{ "%.3f"|format(wp.z + 50.0) }},A {{ "%.3f"|format(wp.a) }},B {{ "%.3f"|format(wp.b) }},C {{ "%.3f"|format(wp.c) }}}
+  LIN {X {{ "%.3f"|format(wp.x) }},Y {{ "%.3f"|format(wp.y) }},Z {{ "%.3f"|format(wp.z) }},A {{ "%.3f"|format(wp.a) }},B {{ "%.3f"|format(wp.b) }},C {{ "%.3f"|format(wp.c) }}}
+{% else %}
+  LIN {X {{ "%.3f"|format(wp.x) }},Y {{ "%.3f"|format(wp.y) }},Z {{ "%.3f"|format(wp.z) }},A {{ "%.3f"|format(wp.a) }},B {{ "%.3f"|format(wp.b) }},C {{ "%.3f"|format(wp.c) }}}
+{% endif %}
+{% endfor %}
+  ; 轨迹结束
+END

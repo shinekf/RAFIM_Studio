@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Large data files
+*.ply
+*.npy
+*.stl
+
+# Sensitive files (API keys)
+打磨/ai_agent/llm_client.py
+打磨/ai_agent/chat_worker.py
+打磨/ARCHITECTURE.md
+打磨/settings.json
+
+# Temp files
+temp_*
+*.tmp
+
+# IDE
+.vscode/
+.idea/
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Archived backups
+_archived_backup/

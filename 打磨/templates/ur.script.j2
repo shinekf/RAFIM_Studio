@@ -1,0 +1,16 @@
+def AI_Grinding_Task():
+  # AI Generated UR/AUBO Grinding Program (Unit: Meters, Radians)
+  global tcp_speed = {{ tcp_speed | default(0.05) }}
+  global tcp_accel = {{ tcp_accel | default(0.1) }}
+{% for wp in waypoints %}
+{% if wp.is_jump %}
+  # --- 检测到非连续区域，执行抬刀跨越 ---
+  movej(p[{{ "%.5f"|format(wp.x) }}, {{ "%.5f"|format(wp.y) }}, {{ "%.5f"|format(wp.z + 0.050) }}, {{ "%.5f"|format(wp.rx) }}, {{ "%.5f"|format(wp.ry) }}, {{ "%.5f"|format(wp.rz) }}], a=tcp_accel*2, v=tcp_speed*2)
+  movel(p[{{ "%.5f"|format(wp.x) }}, {{ "%.5f"|format(wp.y) }}, {{ "%.5f"|format(wp.z) }}, {{ "%.5f"|format(wp.rx) }}, {{ "%.5f"|format(wp.ry) }}, {{ "%.5f"|format(wp.rz) }}], a=tcp_accel, v=tcp_speed)
+{% else %}
+  movel(p[{{ "%.5f"|format(wp.x) }}, {{ "%.5f"|format(wp.y) }}, {{ "%.5f"|format(wp.z) }}, {{ "%.5f"|format(wp.rx) }}, {{ "%.5f"|format(wp.ry) }}, {{ "%.5f"|format(wp.rz) }}], a=tcp_accel, v=tcp_speed)
+{% endif %}
+{% endfor %}
+  stopj(1.0)
+end
+AI_Grinding_Task()

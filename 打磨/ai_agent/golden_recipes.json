@@ -1,0 +1,40 @@
+[
+    {
+        "features": {
+            "length": 200.0,
+            "width": 200.0,
+            "z_range": 202.37106323242188,
+            "z_std": 42.33427429199219,
+            "point_count": 250000
+        },
+        "params": {
+            "voxel_size": 2.0,
+            "filter_type": "统计滤波 (SOR)",
+            "fitting_algorithm": "B样条曲面拟合",
+            "smoothness": 3,
+            "tool_radius": 5.0,
+            "path_step": 1.5,
+            "invert_normal": false
+        },
+        "score": 98.29256381078253
+    },
+    {
+        "features": {
+            "length": 101.09413146972656,
+            "width": 101.05059814453125,
+            "z_range": 31.019880294799805,
+            "z_std": 8.130520820617676,
+            "point_count": 63000
+        },
+        "params": {
+            "voxel_size": 2.0,
+            "filter_type": "统计滤波 (SOR)",
+            "fitting_algorithm": "B样条曲面拟合",
+            "smoothness": 6,
+            "tool_radius": 5.0,
+            "path_step": 1.0,
+            "invert_normal": false
+        },
+        "score": 98.89991302458301
+    }
+]
