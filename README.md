@@ -64,7 +64,17 @@ cd 线激光寻缝 && python main.py
 
 ## 配置 API Key
 
-将 `打磨/ai_agent/llm_client.example.py` 和 `chat_worker.example.py` 复制为 `.py` 文件，填入你的 DeepSeek API Key。
+AI 自动寻优、语音指令解析和聊天智能体等功能需要调用大语言模型。项目支持任何兼容 OpenAI API 格式的服务（如 DeepSeek、OpenAI、通义千问等）。
+
+**配置步骤：**
+
+1. 进入 `打磨/ai_agent/` 目录
+2. 将 `llm_client.example.py` 复制一份，重命名为 `llm_client.py`
+3. 将 `chat_worker.example.py` 复制一份，重命名为 `chat_worker.py`
+4. 打开这两个新文件，找到 `YOUR_API_KEY_HERE`，替换为你自己的 API Key
+5. 如果需要修改 API 地址（默认使用 DeepSeek），同步修改文件中的 `base_url` 和 `model` 字段
+
+> 注意：`.py` 文件已被 `.gitignore` 排除，不会提交到仓库，API Key 不会泄露。
 
 ## 架构铁律
 
